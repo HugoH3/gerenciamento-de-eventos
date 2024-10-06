@@ -28,16 +28,22 @@ public class GestorDeEventos {
         }
     }
 
-    public void listarEventos() {
-        for (int i = 0; i < totalEventos; i++) {
-            Evento evento = eventos[i];
-            System.out.println("Nome: " + evento.getNome() +
-                    ", Data: " + evento.getData() +
-                    ", Local: " + evento.getLocal() +
-                    ", Categoria: " + evento.getCategoria() +
-                    ", Vagas Disponíveis: " + evento.vagasDisponiveis());
+    public String listarEventos() {
+        StringBuilder sb = new StringBuilder();
+        for (Evento evento : eventos) { // Supondo que 'eventos' seja o array ou lista de eventos
+            if (evento != null) { // Verifica se o evento não é nulo
+                sb.append("Nome: ").append(evento.getNome()).append("\n");
+                sb.append("Data: ").append(evento.getData()).append("\n");
+                sb.append("Local: ").append(evento.getLocal()).append("\n");
+                sb.append("Capacidade: ").append(evento.getCapacidadeMaxima()).append("\n");
+                sb.append("Categoria: ").append(evento.getCategoria()).append("\n");
+                sb.append("-----------------------------\n");
+            }
         }
+        return sb.toString(); // Retorna a lista de eventos como uma String
     }
+
+    
 
     public Evento buscarEvento(String nome) {
         for (int i = 0; i < totalEventos; i++) {
