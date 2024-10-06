@@ -14,10 +14,12 @@ public class Main {
             System.out.println("2. Listar Eventos");
             System.out.println("3. Inscrever Participante");
             System.out.println("4. Buscar Evento por Nome");
-            System.out.println("5. Sair");
+            System.out.println("5. Exportar Eventos para CSV");
+            System.out.println("6. Importar Eventos de CSV");
+            System.out.println("7. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
-            scanner.nextLine();
+            scanner.nextLine(); // Consumir nova linha
 
             switch (opcao) {
                 case 1:
@@ -72,13 +74,21 @@ public class Main {
                     break;
 
                 case 5:
+                    gestor.exportarEventosCSV();
+                    break;
+
+                case 6:
+                    gestor.importarEventosCSV();
+                    break;
+
+                case 7:
                     System.out.println("Saindo...");
                     break;
 
                 default:
                     System.out.println("Opção inválida.");
             }
-        } while (opcao != 5);
+        } while (opcao != 7);
 
         scanner.close();
     }
